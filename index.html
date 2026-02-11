@@ -116,13 +116,18 @@ body{
 .letter{
   display:none;
   background:#fffdf7;
-  width:100%;
+  width:90%;
   max-width:420px;
-  padding:30px 26px;
+  padding:30px 24px;
   border-radius:14px;
   box-shadow:0 12px 30px rgba(0,0,0,0.22);
-  animation:fadeIn 0.8s ease;
   margin:0 auto;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
 .letter p{
@@ -133,9 +138,12 @@ body{
 
 .question{
   font-family:'Pacifico',cursive;
-  font-size:clamp(1.8rem,5vw,2.6rem);
-  margin:28px 0;
+  font-size:clamp(1.8rem,6vw,2.6rem);
+  margin:24px 0;
   color:#e91e63;
+  text-align:center;
+  line-height:1.3;
+  width:100%;
 }
 
 .buttons{
@@ -206,6 +214,24 @@ canvas{
   100%{
     opacity:0;
     transform:translateY(-120px) scale(1.5);
+  }
+}
+@media (max-width:480px){
+  .letter{
+    padding:25px 18px;
+  }
+
+  .question{
+    font-size:1.9rem;
+  }
+
+  .buttons{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .buttons button{
+    width:100%;
   }
 }
 
