@@ -122,11 +122,6 @@ body{
   border-radius:14px;
   box-shadow:0 12px 30px rgba(0,0,0,0.22);
   margin:0 auto;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
   text-align:center;
 }
 
@@ -347,7 +342,10 @@ yesBtn.addEventListener("click",()=>{
 //correo para mi, template emailjs.send("service_v7uxqu3","template_ovyq3iq",{
 //correo para ella templates emailjs.send("service_v7uxqu3","template_j7muvm8",{
 
-  letter.style.display="none";
+letter.style.display="flex";
+letter.style.flexDirection="column";
+letter.style.alignItems="center";
+letter.style.justifyContent="center";
   finalMessage.style.display="block";
   launchConfetti();
 });
