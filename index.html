@@ -278,6 +278,7 @@ canvas{
 </div>
 
 <script>
+  let accepted = false;
 const envelope=document.getElementById("envelope");
 const letter=document.getElementById("letter");
 const yesBtn=document.getElementById("yesBtn");
@@ -310,9 +311,16 @@ noBtn.addEventListener("click",()=>{
 
 yesBtn.addEventListener("click",()=>{
 
+  if(accepted) return; // si ya fue presionado, no hace nada
+  accepted = true;
+
+  yesBtn.disabled = true; // desactiva el botón
+  yesBtn.style.opacity = "0.7";
+  yesBtn.style.cursor = "default";
+
   loveSound.play();
 
-  // CORAZONES
+  // corazones
   for(let i=0;i<15;i++){
     const heart=document.createElement("div");
     heart.classList.add("heart");
@@ -324,23 +332,15 @@ yesBtn.addEventListener("click",()=>{
   }
 
   // ENVÍO DE CORREOS
-
-  const fecha = new Date().toLocaleString();
-
-  // Correo para ti
-  emailjs.send("0","0",{
-      message: "Ha dicho que sí!",
-      fecha: "14/02/2026"
+  emailjs.send("TU_SERVICE_ID","TEMPLATE_ID_1",{
+      message: "Ha dicho que sí!"
   });
 
-  // Correo para ella
-  emailjs.send("0","0",{
-      to_email: "yofremendezelpapi@gmail.com",
-      fecha: "14/02/2026"
+  emailjs.send("TU_SERVICE_ID","TEMPLATE_ID_2",{
+      to_email: "CORREO_DE_ELLA"
   });
 
-//correo para mi, template emailjs.send("service_v7uxqu3","template_ovyq3iq",{
-//correo para ella templates emailjs.send("service_v7uxqu3","template_j7muvm8",{
+
 
 letter.style.display="flex";
 letter.style.flexDirection="column";
@@ -348,7 +348,12 @@ letter.style.alignItems="center";
 letter.style.justifyContent="center";
   finalMessage.style.display="block";
   launchConfetti();
+
+  setTimeout(()=>{
+    finalMessage.style.display="block";
+  },800);
 });
+
 
 
 function launchConfetti(){
@@ -392,6 +397,7 @@ function launchConfetti(){
 <script>
 emailjs.init("PXUQJE5lpbL6gF9i_");
 </script>
-
+<script>//correo para mi, template emailjs.send("service_v7uxqu3","template_ovyq3iq",{
+//correo para ella templates emailjs.send("service_v7uxqu3","template_j7muvm8",{</script>
 </body>
 </html>
